@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lvExamTips = findViewById(R.id.listViewExamTips);
-        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, examTipsArray);
-        lvExamTips.setAdapter(adapter);
 
         examTipsArray = new String[5];
         examTipsArray[0] = "Don't just read the code, code it as much as possible during each practical session";
@@ -26,5 +24,9 @@ public class MainActivity extends AppCompatActivity {
         examTipsArray[2] = "Prepare your template source code for each topic";
         examTipsArray[3] = "Create a few empty Android projects to speed up your coding during the exam";
         examTipsArray[4] = "Ensure that your Android Studio is up and running before the exam";
+
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, examTipsArray);
+        lvExamTips.setAdapter(adapter);
+
     }
 }

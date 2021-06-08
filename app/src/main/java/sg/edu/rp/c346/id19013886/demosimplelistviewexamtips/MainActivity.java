@@ -3,12 +3,17 @@ package sg.edu.rp.c346.id19013886.demosimplelistviewexamtips;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView lvExamTips;
+    // Declaration
     String[] examTipsArray;
 
     @Override
@@ -18,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         lvExamTips = findViewById(R.id.listViewExamTips);
 
+        // Initialization - creation objects
         examTipsArray = new String[5];
         examTipsArray[0] = "Don't just read the code, code it as much as possible during each practical session";
         examTipsArray[1] = "Seek help from the lecturer ASAP, don't wait till you lost in the jungle";
@@ -25,8 +31,19 @@ public class MainActivity extends AppCompatActivity {
         examTipsArray[3] = "Create a few empty Android projects to speed up your coding during the exam";
         examTipsArray[4] = "Ensure that your Android Studio is up and running before the exam";
 
+        // new
         ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, examTipsArray);
+
+        // important
         lvExamTips.setAdapter(adapter);
+
+        lvExamTips.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String msg = examTipsArray[position];
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 }
